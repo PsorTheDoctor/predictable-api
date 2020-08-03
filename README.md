@@ -1,2 +1,2 @@
 # predictable-api
-RESTful Api for cryptocurrency prices prediction app.
+REST API for cryptocurrency prices prediction app.
