@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
 
 from models.subscriber import SubscriberModel
+from utils.mail_sender import send_email
 from db import db_session
 
 parser = reqparse.RequestParser()
@@ -36,6 +37,7 @@ class Subscriber(Resource):
     @marshal_with(resource_fields)
     def delete(self, email):
         response = SubscriberModel.query.filter_by(email=email).first()
+        send_email(email)
         if not response:
             abort(404, message="Subscriber {} doesn't exist.".format(email))
         subscriber = SubscriberModel.query.get_or_404(email=email).first()
