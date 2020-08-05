@@ -10,7 +10,7 @@ parser.add_argument('enrolling_date', type=str, required=True)
 resource_fields = {
     'id': fields.Integer,
     'email': fields.String,
-    'enrolling_date': fields.String
+    'enrolling_date': fields.DateTime
 }
 
 

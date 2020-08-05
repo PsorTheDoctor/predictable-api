@@ -15,4 +15,4 @@ class SubscriberModel(Base):
         self.email = email
 
     def __repr__(self):
-        return '<Subscriber %r>' % self.email
+        return '<Subscriber {}>'.format(self.email)
