@@ -6,6 +6,8 @@ from email.mime.multipart import MIMEMultipart
 from time import sleep
 
 
+
+
 SMTP_SERVER = 'smtp.gmail.com'
 PORT = 465
 SENDER = os.environ['PREDICTABLE_EMAIL']
