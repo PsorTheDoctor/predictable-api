@@ -1,5 +1,4 @@
 from flask_restful import Api
-from flask_cors import CORS
 
 from resources.status import *
 from resources.subscribers import *
@@ -10,8 +9,6 @@ from resources.mail_service import *
 
 def create_api(app):
     api = Api(app)
-    CORS(app)
-
     api.add_resource(ServerStatus, '/', '/ping')
 
     api.add_resource(SubscriberList, '/subscribers')
