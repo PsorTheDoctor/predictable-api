@@ -19,7 +19,7 @@ class InstantMailService(Resource):
 class AuthMailService(Resource):
     def get(self, recipient, code):
         abort_if_address_isnt_valid(recipient)
-        send_email(recipient, content=code)
+        send_email(recipient, content=str(code))
         return {'status': 'sent'}
 
 
