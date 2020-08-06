@@ -45,9 +45,10 @@ class SubscriberList(Resource):
         response = SubscriberModel.query.filter_by(email=args['email']).first()
         if response:
             abort(409, message="Subscriber {} already exists.".format(args['email']))
+        else:
+            send_email(args['email'])
+
         subscriber = SubscriberModel(email=args['email'], enrolling_date=args['enrolling_date'])
         db_session.add(subscriber)
         db_session.commit()
-
-        send_email(args['email'])
         return subscriber, 201
