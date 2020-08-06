@@ -1,4 +1,4 @@
-MAIL_TEMPLATES = {
+TEMPLATES = {
     "welcome": {
         'subject': 'Hello from predictables!',
         'content': 'Thanks for enrolling!'
