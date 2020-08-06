@@ -14,6 +14,7 @@ def create_api(app):
 
     api.add_resource(SubscriberList, '/subscribers')
     api.add_resource(Subscriber, '/subscribers/<string:email>')
+    api.add_resource(SubscriberQty, '/subscribers-qty')
 
     api.add_resource(PastPriceList, '/past-prices/<string:currency>')
     api.add_resource(PastPriceByDate, '/past-prices/<string:currency>&<string:date>')

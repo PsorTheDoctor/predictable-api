@@ -55,3 +55,8 @@ class SubscriberList(Resource):
         db_session.add(subscriber)
         db_session.commit()
         return subscriber, 201
+
+
+class SubscriberQty(Resource):
+    def get(self):
+        return len(SubscriberModel.query.all())
