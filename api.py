@@ -21,5 +21,6 @@ def create_api(app):
     api.add_resource(FuturePrice, '/future-prices/<string:currency>')
 
     api.add_resource(InstantMailService, '/mail/<string:recipient>')
+    api.add_resource(AuthMailService, '/mail/<string:recipient>&<int:code>')
     api.add_resource(NewsletterService, '/newsletter/<string:recipient>')
     return api

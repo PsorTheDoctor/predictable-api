@@ -16,6 +16,13 @@ class InstantMailService(Resource):
         return {'status': 'sent'}
 
 
+class AuthMailService(Resource):
+    def get(self, recipient, code):
+        abort_if_address_isnt_valid(recipient)
+        send_email(recipient, content=code)
+        return {'status': 'sent'}
+
+
 class NewsletterService(Resource):
     def get(self, recipient):
         abort_if_address_isnt_valid(recipient)

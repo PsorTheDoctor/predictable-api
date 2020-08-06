@@ -28,7 +28,10 @@ class Subscriber(Resource):
         response = SubscriberModel.query.filter_by(email=email).first()
         if not response:
             abort(404, message="Subscriber {} doesn't exist.".format(email))
-        subscriber = SubscriberModel.query.get_or_404(email=email).first()
+        else:
+            send_email(email)
+
+        subscriber = SubscriberModel.query.filter_by(email=email).first()
         db_session.delete(subscriber)
         db_session.commit()
         return '', 204

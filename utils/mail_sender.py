@@ -5,8 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from time import sleep
 
-
-
+# from mail_templates import TEMPLATES
 
 SMTP_SERVER = 'smtp.gmail.com'
 PORT = 465
