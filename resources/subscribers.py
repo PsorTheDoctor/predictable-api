@@ -26,7 +26,6 @@ class Subscriber(Resource):
     @marshal_with(resource_fields)
     def delete(self, email):
         response = SubscriberModel.query.filter_by(email=email).first()
-        send_email(email)
         if not response:
             abort(404, message="Subscriber {} doesn't exist.".format(email))
         subscriber = SubscriberModel.query.get_or_404(email=email).first()
@@ -49,4 +48,6 @@ class SubscriberList(Resource):
         subscriber = SubscriberModel(email=args['email'], enrolling_date=args['enrolling_date'])
         db_session.add(subscriber)
         db_session.commit()
+
+        send_email(args['email'])
         return subscriber, 201

@@ -14,3 +14,6 @@ def init_db():
     import models.subscriber
     import models.past_price
     Base.metadata.create_all(bind=engine)
+
+
+
