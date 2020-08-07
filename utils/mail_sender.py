@@ -4,8 +4,9 @@ import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from time import sleep
+from random import randint
 
-# from mail_templates import TEMPLATES
+# from utils.mail_templates import TEMPLATES
 
 SMTP_SERVER = 'smtp.gmail.com'
 PORT = 465
@@ -14,6 +15,8 @@ PASSWORD = os.environ['PREDICTABLE_PASSWORD']
 
 default_subject = 'Hello!'
 default_content = 'Hello from predictable!'
+
+code = 123456
 
 context = ssl.create_default_context()
 
@@ -42,3 +45,9 @@ def send_email_repeatedly(recipients,
     while True:
         send_email(recipients, subject, content)
         sleep(period)
+
+
+def send_confirmation_mail(recipient):
+    global code
+    code = randint(100000, 999999)
+    send_email(recipient, content=str(code))

@@ -6,7 +6,8 @@ from db import db_session
 
 parser = reqparse.RequestParser()
 parser.add_argument('email', type=str, required=True)
-parser.add_argument('since', type=str)
+parser.add_argument('since', type=str, required=True)
+parser.add_argument('code', type=int, required=True)
 
 resource_fields = {
     'id': fields.Integer,
@@ -43,18 +44,22 @@ class SubscriberList(Resource):
         return SubscriberModel.query.all()
 
     @marshal_with(resource_fields)
-    def post(self):
+    def post(self, received_code):
         args = parser.parse_args()
         response = SubscriberModel.query.filter_by(email=args['email']).first()
         if response:
-            abort(409, message="Subscriber {} already exists.".format(args['email']))
+            abort(409, message='Subscriber {} already exists.'.format(args['email']))
         else:
-            send_email(args['email'])
+            # !!Imports code set by send_confirmation_email() method
+            from utils.mail_sender import code
 
-        subscriber = SubscriberModel(email=args['email'], since=args['since'])
-        db_session.add(subscriber)
-        db_session.commit()
-        return subscriber, 201
+            if received_code == code:
+                subscriber = SubscriberModel(email=args['email'], since=args['since'])
+                db_session.add(subscriber)
+                db_session.commit()
+            else:
+                abort(401, message='The code is not valid.')
+        return '', 201
 
 
 class SubscriberQty(Resource):

@@ -8,7 +8,7 @@ class SubscriberModel(Base):
 
     id = Column(Integer, primary_key=True)
     email = Column(String(50), nullable=False, unique=True)
-    since = Column(String(30))
+    since = Column(String(30))  # nullable=False
 
     def __init__(self, email=None, since=None):
         self.email = email

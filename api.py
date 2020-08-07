@@ -12,7 +12,7 @@ def create_api(app):
     api = Api(app)
     api.add_resource(ServerStatus, '/', '/ping')
 
-    api.add_resource(SubscriberList, '/subscribers')
+    api.add_resource(SubscriberList, '/subscribers', '/subscribers&confirm=<int:code>')
     api.add_resource(Subscriber, '/subscribers/<string:email>')
     api.add_resource(SubscriberQty, '/subscribers-qty')
 
@@ -25,6 +25,6 @@ def create_api(app):
     api.add_resource(FuturePrice, '/future-prices/<string:currency>&<string:date>')
 
     api.add_resource(InstantMailService, '/mail/<string:recipient>')
-    api.add_resource(AuthMailService, '/mail/<string:recipient>&<int:code>')
+    api.add_resource(AuthMailService, '/auth/<string:recipient>')
     api.add_resource(NewsletterService, '/newsletter/<string:recipient>')
     return api
