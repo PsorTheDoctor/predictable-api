@@ -6,12 +6,12 @@ from db import db_session
 
 parser = reqparse.RequestParser()
 parser.add_argument('email', type=str, required=True)
-parser.add_argument('enrolling_date', type=str)
+parser.add_argument('since', type=str)
 
 resource_fields = {
     'id': fields.Integer,
     'email': fields.String,
-    'enrolling_date': fields.String
+    'since': fields.String
 }
 
 
@@ -51,7 +51,7 @@ class SubscriberList(Resource):
         else:
             send_email(args['email'])
 
-        subscriber = SubscriberModel(email=args['email'], enrolling_date=args['enrolling_date'])
+        subscriber = SubscriberModel(email=args['email'], since=args['since'])
         db_session.add(subscriber)
         db_session.commit()
         return subscriber, 201
