@@ -12,7 +12,7 @@ def create_api(app):
     api = Api(app)
     api.add_resource(ServerStatus, '/', '/ping')
 
-    api.add_resource(SubscriberList, '/subscribers', '/subscribers&confirm=<int:code>')
+    api.add_resource(SubscriberList, '/subscribers')
     api.add_resource(Subscriber, '/subscribers/<string:email>')
     api.add_resource(SubscriberQty, '/subscribers-qty')
 

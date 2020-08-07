@@ -12,7 +12,8 @@ parser.add_argument('code', type=int, required=True)
 resource_fields = {
     'id': fields.Integer,
     'email': fields.String,
-    'since': fields.String
+    'since': fields.String,
+    'code': fields.Integer
 }
 
 
@@ -44,7 +45,7 @@ class SubscriberList(Resource):
         return SubscriberModel.query.all()
 
     @marshal_with(resource_fields)
-    def post(self, received_code):
+    def post(self):
         args = parser.parse_args()
         response = SubscriberModel.query.filter_by(email=args['email']).first()
         if response:
@@ -53,8 +54,10 @@ class SubscriberList(Resource):
             # !!Imports code set by send_confirmation_email() method
             from utils.mail_sender import code
 
-            if received_code == code:
-                subscriber = SubscriberModel(email=args['email'], since=args['since'])
+            if args['code'] == code:
+                subscriber = SubscriberModel(email=args['email'],
+                                             since=args['since'],
+                                             code=args['code'])
                 db_session.add(subscriber)
                 db_session.commit()
             else:
