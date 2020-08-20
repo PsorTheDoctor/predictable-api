@@ -10,8 +10,8 @@ from random import randint
 
 SMTP_SERVER = 'smtp.gmail.com'
 PORT = 465
-SENDER = os.environ['PREDICTABLE_EMAIL']
-PASSWORD = os.environ['PREDICTABLE_PASSWORD']
+SENDER = 'predictablebot@gmail.com'
+PASSWORD = 'SekSI2019'
 
 default_subject = 'Hello!'
 default_content = 'Hello from predictable!'
