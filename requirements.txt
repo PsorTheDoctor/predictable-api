@@ -131,7 +131,7 @@ roomai == 0.1.16
 # D:\DeepLearning\predictable-api\db.py: 14,15
 # D:\DeepLearning\predictable-api\resources\past_prices.py: 3
 # D:\DeepLearning\predictable-api\resources\subscribers.py: 3
-semantic-segmentation == 0.1.0
+# semantic-segmentation == 0.1.0
 
 # D:\DeepLearning\predictable-api\db.py: 14,15
 # D:\DeepLearning\predictable-api\resources\past_prices.py: 3
