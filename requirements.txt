@@ -66,11 +66,6 @@ data-service == 0.0.35
 # D:\DeepLearning\predictable-api\resources\subscribers.py: 5
 db == 0.1.1
 
-# D:\DeepLearning\predictable-api\db.py: 14,15
-# D:\DeepLearning\predictable-api\resources\past_prices.py: 3
-# D:\DeepLearning\predictable-api\resources\subscribers.py: 3
-examplejupyter == 1.0.0
-
 gunicorn == 20.0.4
 
 # D:\DeepLearning\predictable-api\db.py: 14,15
