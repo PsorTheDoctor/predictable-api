@@ -14,3 +14,9 @@ def get_link(idx):
 
 def get_published_date(idx):
     return news['entries'][idx]['published']
+
+
+for i in range(5):
+    print(get_header(i))
+    print(get_link(i))
+    print(get_published_date(i))
