@@ -1,2 +1,3 @@
 # predictable-api
-REST API for cryptocurrency prices prediction app.
+
+[DEPRECATED] Already deployed at heroku.
