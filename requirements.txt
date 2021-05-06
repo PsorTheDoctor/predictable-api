@@ -4,7 +4,7 @@
 Flask == 1.1.2
 
 # D:\DeepLearning\predictable-api\cors.py: 1
-Flask_Cors == 3.0.8
+Flask_Cors == 3.0.9
 
 # D:\DeepLearning\predictable-api\api.py: 1
 # D:\DeepLearning\predictable-api\resources\fresh_price.py: 1
